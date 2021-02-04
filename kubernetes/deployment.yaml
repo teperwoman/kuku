@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kuku
+  labels:
+    app: kuku
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kuku
+  template:
+    metadata:
+      labels:
+        app: kuku
+    spec:
+      containers:
+      - name: kuku
+        image: teperwoman/kuku
+        ports:
+        - containerPort: 8080
