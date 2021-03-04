@@ -1,0 +1,38 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: thefirstcontainer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kuku
+  labels:
+    app: kuku
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kuku
+  template:
+    metadata:
+      labels:
+        app: kuku
+    spec:
+      containers:
+      - name: kuku
+        image: tftest/kuku
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kuku
+spec:
+  selector:
+    app: kuku
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
