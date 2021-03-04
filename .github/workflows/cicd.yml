@@ -75,6 +75,6 @@ jobs:
         with:
           namespace: 'thefirstcontainer'
           manifests: |
-              kubernetes/deployment.yaml
+              kubernetes/all-in-one.yaml
           images: 'tftest/kuku:${{ github.sha }}'
           kubectl-version: 'latest'
